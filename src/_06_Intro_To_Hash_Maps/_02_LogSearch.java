@@ -1,7 +1,13 @@
 package _06_Intro_To_Hash_Maps;
 
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
 
-public class _02_LogSearch {
+import javax.swing.*;
+
+public class _02_LogSearch implements ActionListener {
   /* 
 	 * Crate a HashMap of Integers for the keys and Strings for the values.
 	 * Create a GUI with three buttons. 
@@ -29,5 +35,57 @@ public class _02_LogSearch {
 	 * 				is not in the list. 
 	 *
 	 * */
-	
+	HashMap<Integer,String> map=new HashMap<Integer,String>();
+	JFrame frame=new JFrame();
+	JPanel panel=new JPanel();
+	JButton button1=new JButton();
+	JButton button2=new JButton();
+	JButton button3=new JButton();
+	JButton button4=new JButton();
+	public static void main(String[] args) {
+		_02_LogSearch l = new _02_LogSearch();
+		l.start();
+	}
+	public void start() {
+		frame.setVisible(true);
+		frame.add(panel);
+		button1.setPreferredSize(new Dimension(150,30));
+		button1.addActionListener(this);
+		button2.setPreferredSize(new Dimension(150,30));
+		button2.addActionListener(this);
+		button3.setPreferredSize(new Dimension(150,30));
+		button3.addActionListener(this);
+		button4.setPreferredSize(new Dimension(150,30));
+		button4.addActionListener(this);
+		button1.setText("Add Entry");
+		button2.setText("Search by ID");
+		button3.setText("View List");
+		button4.setText("Remove Entry");
+		panel.add(button1);
+		panel.add(button2);
+		panel.add(button3);
+		panel.add(button4);
+		frame.pack();
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		if(arg0.getSource()==button1) {
+			int id=Integer.parseInt(JOptionPane.showInputDialog("Enter an id"));
+			String name=JOptionPane.showInputDialog("Enter a name");
+			map.put(id, name);
+		}else if(arg0.getSource()==button2) {
+			int id=Integer.parseInt(JOptionPane.showInputDialog("Enter an id"));
+			String answer=map.get(id);
+			if(answer==null) {
+				JOptionPane.showMessageDialog(null, "Id not found");
+			}else {
+				JOptionPane.showMessageDialog(null, answer);
+			}
+		}else if(arg0.getSource()==button3) {
+			
+		}else if(arg0.getSource()==button4) {
+			
+		}
+		
+	}
 }
