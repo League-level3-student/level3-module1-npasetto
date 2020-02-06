@@ -82,9 +82,18 @@ public class _02_LogSearch implements ActionListener {
 				JOptionPane.showMessageDialog(null, answer);
 			}
 		}else if(arg0.getSource()==button3) {
-			
+			String str="";
+			for (int key : map.keySet()) {
+				str+="ID: "+key+" Name: "+map.get(key)+"\n";
+			}
+			JOptionPane.showMessageDialog(null, str);
 		}else if(arg0.getSource()==button4) {
-			
+			int id=Integer.parseInt(JOptionPane.showInputDialog("Enter an id"));
+			if(map.containsKey(id)) {
+				map.remove(id);
+			}else {
+				JOptionPane.showMessageDialog(null, "Id not found");
+			}
 		}
 		
 	}
